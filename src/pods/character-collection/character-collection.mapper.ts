@@ -7,8 +7,9 @@ export const mapFromApiToVm = (
   id: `${character?.id}`,
   picture: `${character?.image}`,
   name: character?.name,
-  description: `${character?.name} is ${character?.species} and ${character?.gender} and currently is ${character?.status}`,
-  // rating: character.hotelRating,
-  rating: 3, // DRH FIX THIS
+  description: `${character?.name} is ${character?.species}, ${character?.gender} and currently is ${character?.status}`,
+  rating: createRating(),
   address: character?.origin?.name,
 });
+
+const createRating = () => Math.floor(Math.random() * 10);

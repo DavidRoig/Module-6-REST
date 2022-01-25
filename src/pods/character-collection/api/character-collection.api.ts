@@ -1,6 +1,5 @@
 import { CharacterEntityApi } from './character-collection.api-model';
 import axios from 'axios';
-let hotelCollection = []; // DRH TO DELETE
 
 export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> =>
   axios({
@@ -8,9 +7,6 @@ export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> =>
     url: 'https://rickandmortyapi.com/api/character', // DRH REPLACE BY CONST
   }).then((response) => response?.data?.results, console.error);
 
-export const deleteHotel = async (id: string): Promise<boolean> => {
-  hotelCollection = hotelCollection.filter(
-    (character) => `${character.id}` !== id
-  );
-  return true;
+export const deleteCharacter = async (id: string): Promise<boolean> => {
+  throw new Error('Ops...this method is not implemented. ');
 };
