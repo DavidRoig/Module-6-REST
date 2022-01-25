@@ -8,7 +8,7 @@ import {
 import { Button } from '@material-ui/core';
 import { formValidation } from './hotel.validations';
 import { Hotel } from './hotel.vm';
-import * as classes from './hotel.styles';
+import * as classes from './character.styles';
 import { Lookup } from 'common/models';
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   onSave: (hotel: Hotel) => void;
 }
 
-export const HotelComponent: React.FunctionComponent<Props> = (props) => {
+export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
   const { hotel, cities, onSave } = props;
 
   return (

@@ -4,9 +4,9 @@ import * as api from './api';
 import { createEmptyHotel, Hotel } from './hotel.vm';
 import { mapHotelFromApiToVm, mapHotelFromVmToApi } from './hotel.mappers';
 import { Lookup } from 'common/models';
-import { HotelComponent } from './hotel.component';
+import { CharacterComponent } from './character.component';
 
-export const HotelContainer: React.FunctionComponent = (props) => {
+export const CharacterContainer: React.FunctionComponent = (props) => {
   const [hotel, setHotel] = React.useState<Hotel>(createEmptyHotel());
   const [cities, setCities] = React.useState<Lookup[]>([]);
   const { id } = useParams();
@@ -39,5 +39,7 @@ export const HotelContainer: React.FunctionComponent = (props) => {
     }
   };
 
-  return <HotelComponent hotel={hotel} cities={cities} onSave={handleSave} />;
+  return (
+    <CharacterComponent hotel={hotel} cities={cities} onSave={handleSave} />
+  );
 };

@@ -1,20 +1,20 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
-import { HotelEntityVm } from './hotel-collection.vm';
+import { CharacterEntityVm } from './character-collection.vm';
 import { HotelCard } from './components/hotel-card.component';
-import * as classes from './hotel-collection.styles';
+import * as classes from './character-collection.styles';
 
 interface Props {
-  hotelCollection: HotelEntityVm[];
+  characterCollection: CharacterEntityVm[];
   onCreateHotel: () => void;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
 }
 
-export const HotelCollectionComponent: React.FunctionComponent<Props> = (
+export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
   props
 ) => {
-  const { hotelCollection, onCreateHotel, onEdit, onDelete } = props;
+  const { characterCollection, onCreateHotel, onEdit, onDelete } = props;
 
   return (
     <div className={classes.root}>
@@ -23,7 +23,7 @@ export const HotelCollectionComponent: React.FunctionComponent<Props> = (
       </Button>
 
       <ul className={classes.list}>
-        {hotelCollection.map((hotel) => (
+        {characterCollection.map((hotel) => (
           <li key={hotel.id}>
             <HotelCard hotel={hotel} onEdit={onEdit} onDelete={onDelete} />
           </li>
