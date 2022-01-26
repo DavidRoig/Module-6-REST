@@ -2,11 +2,12 @@ import { CharacterApi } from './character.api-model';
 import { Lookup } from 'common/models';
 import { mockCities } from './hotel.mock-data';
 import Axios from 'axios';
+import { EnvConstants } from 'core/env.constants';
 
 export const getCharacter = async (id: string): Promise<CharacterApi> => {
   return Axios.request({
     method: 'GET',
-    url: `https://rickandmortyapi.com/api/character/${id}`,
+    url: `${EnvConstants.apiUrl}${id}`,
   }).then((response) => response?.data, console.error);
 };
 

@@ -37,8 +37,8 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
             name="description"
             label="Description"
             multiline={true}
-            rows={3}
-            rowsMax={5}
+            minRows={3}
+            maxRows={5}
           />
           <Button type="submit" variant="contained" color="primary">
             Save

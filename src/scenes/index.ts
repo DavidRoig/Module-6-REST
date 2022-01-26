@@ -1,2 +1,2 @@
-export * from './character-collection.scene';
-export * from './character.scene';
+// export * from './api';
+export * from './json-server';
