@@ -3,6 +3,7 @@ interface Env {
   basePicturesUrl: string;
   apiUrl: string;
   jsonServerUrl: string;
+  graphQLUrl: string;
 }
 
 export const EnvConstants: Env = {
@@ -10,4 +11,5 @@ export const EnvConstants: Env = {
   basePicturesUrl: process.env.BASE_PICTURES_URL,
   apiUrl: process.env.API_URL,
   jsonServerUrl: process.env.JSON_SERVER_URL,
+  graphQLUrl: process.env.GRAPHQL_URL,
 };

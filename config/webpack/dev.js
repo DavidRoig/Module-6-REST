@@ -30,6 +30,7 @@ module.exports = merge.strategy({
     hot: true,
     proxy: {
       '/api': 'http://localhost:3000',
+      '/graph': 'https://rickandmortyapi.com/graphql/',
     },
   },
   module: {

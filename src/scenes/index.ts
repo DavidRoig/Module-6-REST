@@ -1,2 +1,3 @@
 // export * from './api';
-export * from './json-server';
+export * from './graphQL';
+// export * from './json-server';
