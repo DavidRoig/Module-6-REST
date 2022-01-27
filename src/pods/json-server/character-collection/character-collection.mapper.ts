@@ -3,13 +3,10 @@ import * as apiModel from './api/character-collection.api-model';
 import * as viewModel from './character-collection.vm';
 
 export const mapFromApiToVm = (
-  character: apiModel.CharacterEntityApi
+  character: apiModel.CharacterApi
 ): viewModel.CharacterEntityVm => ({
+  ...character,
   id: `${character?.id}`,
-  picture: `${character?.image}`,
-  name: character?.name,
-  description: `${character?.name} is ${character?.species}, ${character?.gender} and currently is ${character?.status}`,
-  rating: createRandomRating(),
-  address: character?.origin?.name,
-  bestSentences: character?.bestSentences,
+  picture: character?.image,
+  address: character?.location,
 });

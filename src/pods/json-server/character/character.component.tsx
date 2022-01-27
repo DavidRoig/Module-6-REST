@@ -39,8 +39,8 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
     character.bestSentences = result;
   };
 
-  const addSentence = (newSentence: string) => {
-    character.bestSentences.push(newSentence);
+  const addSentence = (sentence: string) => {
+    character.bestSentences.push(sentence);
     setBestSentences([...character.bestSentences]);
     setNewSentence('');
   };
@@ -81,7 +81,7 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
                 label="New best sentence"
                 placeholder='Type the new sentence and click on "Add Icon"'
                 value={newSentence}
-                onChange={(event) => setNewSentence(event.target.value)}
+                onChange={(e) => setNewSentence(e.target.value)}
               />
               <ListItemSecondaryAction>
                 <IconButton

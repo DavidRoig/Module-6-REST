@@ -7,11 +7,7 @@ export const mapCharacterFromApiToVm = (
 ): viewModel.Character => ({
   ...character,
   id: `${character.id}`,
-  name: character.name,
-  description: `${character?.name} is ${character?.species}, ${character?.gender} and currently is ${character?.status}`,
-  rating: createRandomRating(),
-  address: character?.origin?.name,
-  city: character?.location?.name,
+  address: character.location,
 });
 
 export const mapCharacterFromVmToApi = (
@@ -20,14 +16,5 @@ export const mapCharacterFromVmToApi = (
   ({
     ...character,
     id: +character.id,
-    // shortDescription: character.description, // DRH REVIEW
-    // hotelRating: character.rating,
-    // address1: character.address,
-    // city: character.city,
-    status: '',
-    gender: '',
-    image: '',
-    location: { name: character.city },
-    origin: { name: character.address },
-    species: '',
+    location: character.address,
   } as apiModel.CharacterApi);

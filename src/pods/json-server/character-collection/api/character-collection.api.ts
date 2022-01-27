@@ -1,8 +1,8 @@
-import { CharacterEntityApi } from './character-collection.api-model';
+import { CharacterApi } from './character-collection.api-model';
 import axios from 'axios';
 import { EnvConstants } from 'core/env.constants';
 
-export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> =>
+export const getCharacterCollection = async (): Promise<CharacterApi[]> =>
   axios({
     method: 'GET',
     url: EnvConstants.jsonServerUrl,

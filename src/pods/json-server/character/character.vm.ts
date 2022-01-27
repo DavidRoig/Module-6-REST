@@ -5,6 +5,7 @@ export interface Character {
   rating: number;
   address: string;
   city: string;
+  image: string;
   bestSentences: string[];
 }
 
@@ -15,5 +16,6 @@ export const createEmptyCharacter = (): Character => ({
   rating: 0,
   address: '',
   city: '',
+  image: '',
   bestSentences: [],
 });

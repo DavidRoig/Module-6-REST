@@ -1,15 +1,10 @@
 export interface CharacterApi {
   id: number;
   name: string;
-  status: string;
-  species: string;
-  gender: string;
+  description: string;
+  rating: number;
   bestSentences: string[];
-  origin: {
-    name: string;
-  };
-  location: {
-    name: string;
-  };
+  city: string;
+  location: string;
   image: string;
 }
