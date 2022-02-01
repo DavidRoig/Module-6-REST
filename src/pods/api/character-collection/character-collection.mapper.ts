@@ -12,3 +12,8 @@ export const mapFromApiToVm = (
   rating: createRandomRating(),
   address: character?.origin?.name,
 });
+
+export interface VmResultPaginated {
+  data: viewModel.CharacterEntityVm[];
+  total: number;
+}

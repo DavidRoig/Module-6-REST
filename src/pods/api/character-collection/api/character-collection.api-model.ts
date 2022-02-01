@@ -18,3 +18,8 @@ export interface CharacterEntityApi {
   url: string;
   created: string;
 }
+
+export interface ApiResultPaginated {
+  data: CharacterEntityApi[];
+  total: number;
+}

@@ -6,16 +6,18 @@ import { useCharacterCollection } from './character-collection.hook';
 import { CharacterCollectionComponent } from './character-collection.component';
 import { TextFieldComponent } from 'common/components';
 import { Button } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
 
 export const CharacterCollectionContainer = () => {
-  const { characterCollection, loadCharacterCollection } =
+  const { characterCollection, total, loadCharacterCollection } =
     useCharacterCollection();
   const history = useHistory();
 
-  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = React.useState<string>('');
+  const [currentPage, setCurrentPage] = React.useState<number>(1);
 
   React.useEffect(() => {
-    loadCharacterCollection(searchTerm);
+    loadCharacterCollection(searchTerm, currentPage);
   }, []);
 
   const handleCreateCharacter = () => {
@@ -28,7 +30,7 @@ export const CharacterCollectionContainer = () => {
 
   const handleDelete = async (id: string) => {
     await deleteCharacter(id);
-    loadCharacterCollection(searchTerm);
+    loadCharacterCollection(searchTerm, currentPage);
   };
 
   const handleSearchOnChange = (e) => {
@@ -36,7 +38,12 @@ export const CharacterCollectionContainer = () => {
   };
 
   const handleSearchOnClick = () => {
-    loadCharacterCollection(searchTerm);
+    loadCharacterCollection(searchTerm, currentPage);
+  };
+
+  const handlePaginationOnClick = (_, page: number) => {
+    setCurrentPage(page);
+    loadCharacterCollection(searchTerm, page);
   };
 
   return (
@@ -48,6 +55,15 @@ export const CharacterCollectionContainer = () => {
       <Button variant="contained" color="primary" onClick={handleSearchOnClick}>
         Search
       </Button>
+
+      <Pagination
+        count={total}
+        variant="outlined"
+        color="primary"
+        page={currentPage}
+        onChange={handlePaginationOnClick}
+      />
+
       <CharacterCollectionComponent
         characterCollection={characterCollection}
         onCreateCharacter={handleCreateCharacter}
