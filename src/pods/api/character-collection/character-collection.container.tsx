@@ -4,14 +4,18 @@ import { linkRoutes } from 'core/router';
 import { deleteCharacter } from './api';
 import { useCharacterCollection } from './character-collection.hook';
 import { CharacterCollectionComponent } from './character-collection.component';
+import { TextFieldComponent } from 'common/components';
+import { Button } from '@material-ui/core';
 
 export const CharacterCollectionContainer = () => {
   const { characterCollection, loadCharacterCollection } =
     useCharacterCollection();
   const history = useHistory();
 
+  const [searchTerm, setSearchTerm] = React.useState('');
+
   React.useEffect(() => {
-    loadCharacterCollection();
+    loadCharacterCollection(searchTerm);
   }, []);
 
   const handleCreateCharacter = () => {
@@ -24,15 +28,32 @@ export const CharacterCollectionContainer = () => {
 
   const handleDelete = async (id: string) => {
     await deleteCharacter(id);
-    loadCharacterCollection();
+    loadCharacterCollection(searchTerm);
+  };
+
+  const handleSearchOnChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchOnClick = () => {
+    loadCharacterCollection(searchTerm);
   };
 
   return (
-    <CharacterCollectionComponent
-      characterCollection={characterCollection}
-      onCreateCharacter={handleCreateCharacter}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-    />
+    <>
+      <TextFieldComponent
+        placeholder="Search Character"
+        onChange={handleSearchOnChange}
+      />
+      <Button variant="contained" color="primary" onClick={handleSearchOnClick}>
+        Search
+      </Button>
+      <CharacterCollectionComponent
+        characterCollection={characterCollection}
+        onCreateCharacter={handleCreateCharacter}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
+    </>
   );
 };
